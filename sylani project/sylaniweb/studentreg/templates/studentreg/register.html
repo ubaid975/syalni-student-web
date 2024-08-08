@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <title>Document</title>
+    {% load static %}
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            
+            background-color: #1f1;
+            
+            
+        }
+        header .logoc{
+            display: flex;
+            justify-content: center;
+
+        }
+        header .logo{
+            margin-left: 2em;
+        }
+        .container .icon{
+            width: 50px;
+            height: 50px;
+            display: flex;
+
+        }
+        .container{
+            display: flex;
+            justify-content: space-evenly;
+            padding-right: 8em;
+        }
+        .container .links{
+            border: 2px solid blue;
+            
+            height: 30px;
+            text-align: center;
+            width: 120px;
+            border-radius: 50px;
+            margin-top: 1.5em;
+            
+        }
+       
+        .container .links p{
+            padding-top: 2px;
+        }
+        .container .iconc{
+            
+            display: flex;
+        }
+        .container .iconc .icon{
+            margin: 1em;
+        }
+        .service{
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5em;
+            font-size:2rem;
+
+        }
+        .button{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 2em;
+        }
+        .b{
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            
+            border-bottom: none;
+            font-size: 1.5;
+            background-color: aliceblue;
+            color: blue;
+            
+        }
+        .b:visited{
+            border: 2px solid blue;
+            border-bottom: none;
+            color: blue;
+        }
+        .b:hover{
+            border: 2px solid blue;
+            border-bottom: none;
+            color: blue;
+        }
+        section form{
+            display: flex;
+            width: 50%;
+            margin: 8em auto;
+            flex-wrap: wrap;
+            
+            
+        }
+        section form .inputs{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 3em;
+            
+        }
+        section form .inputs select{
+            height: 3em;
+            text-align: center;
+            margin-top: 0.5em;
+            background-color: white;
+            
+        }
+        section form .inputs input{
+            height: 3em;
+            margin-top: 0.5;
+            background-color: white;
+            
+        }
+        section form .address{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            
+}
+        section form .quli{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+
+}       section form .lap{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+}
+        
+       section form button{
+        width: 100%;
+        background-color: white;
+        height: 2em;
+        border: 2px solid blue;
+        
+       }
+       .message{
+        width: 100%;
+        background-color: white;
+
+       }
+       .message p{
+        text-align: center;
+        color: white;
+       }
+       .error{
+        background-color: white;
+        color: red;
+       }
+       .warning{
+        background-color: white;
+        color: orange;
+       }
+       .success{
+        background-color: white;
+        color: green;
+       }
+        
+        
+        
+
+        
+    </style>
+</head>
+<body>
+    {% for message in messages %}
+        <div class="{{message.tags}}" style="margin: 0; text-align: center;">{{message}}</div>
+    {% endfor %}
+    
+   <header>
+   
+
+    
+    <div class="logoc">
+        <img src="\static\studentreg\logo.png" alt="" class="logo">
+    </div>
+    <div class="container">
+        <div class="iconc">
+            <a href="https://www.facebook.com/saylani.smit?mibextid=ZbWKwL" target="_blank"><img src="\static\studentreg\facebook.png" alt="" class="icon"></a>
+            <a href="https://www.instagram.com/officialswit?igsh=a3BhYnR0aDQ4YjU=" target="_blank"><img src="\static\studentreg\intagram.png" alt="" class="icon"></a>
+            <a href="https://youtube.com/@saylaniwelfaretrustofficial?si=LH7FcZIeYhO6Zrbn" target="_blank"><img src="\static\studentreg\youtube.png" alt="" class="icon"></a>
+        </div>
+        <div class="tittle">
+            <h1>Registration</h1>
+            <h1>Form - SMIT</h1>
+        </div>
+        <div class="links">
+            <p>student portal</p>
+        </div>
+
+
+    </div>
+    <div class="service">
+        <p>Services-Education-Registration</p>
+    </div>
+    <div class="button" >
+        <div class="btn1 btn">
+            <a href="/sylani/student/register/" class="b registration">Registration</a>
+        </div>
+        <div class="btn2 btn">
+            <a href="/sylani/student/data/" class="b Students">Students</a>
+        </div>
+        <div class="btn3 btn">
+            <a href="/sylani/student/result/" class="Result b">Result</a>
+        </div>
+    </div>
+   </header>
+   <section>
+        <form action="" method="post">
+            {% csrf_token%}
+    
+            <div class="inputs city">
+            <label for="">Select City</label>
+            <select name="city" id="" required>
+                <option value="none" selected disabled>None</option>
+                
+                <option value="karachi">karachi</option>
+            
+                
+            </select>
+            </div>
+            <div class="inputs course" >
+                <label for="">Select Course Event</label>
+                <select name="course" id="" required>
+                    <option value="none" selected disabled>None</option>
+                    <option value="graphic design">Graphic Design</option>
+                    <option value="python">Python</option>
+                    <option value="web development">Web Development</option>
+                    <option value="3d animation">3D Animation</option>
+                    <option value="digital marketing">Digital Markiting</option>
+                </select>
+            </div>
+            <div class="inputs campus">
+                <label for="">Select Campus</label>
+                <select name="campus" id="">
+                    <option value="none" selected disabled>None</option>
+                    <option value="bahadurabad campus">Bahadurabad Campus</option>
+                    <option value="gulshan campus">Gulshan Campus</option>
+                </select>
+            </div>
+            <div class="inputs prefences">
+                <label for="">Select Class Prefences</label>
+                <select name="timing" id="" required>
+                    <option value="none" selected disabled>none</option>
+                    <option value="9 to 11">9 to 11</option>
+                    <option value="7 to 9">7 to 9</option>
+                </select>
+            </div>
+            <div class="inputs">
+                <label for="">Full Name</label>
+                <input type="text" name="name" min="2" max="25" required>
+            </div>
+            <div class="inputs">
+                <label for="">Father Name</label>
+                <input type="text" name="fname" min="2" max="25" required>
+            </div>
+            <div class="inputs">
+                <label for="">Email</label>
+                <input type="email" name="email" required>
+
+            </div>
+            <div class="inputs">
+                <label for="">Phone</label>
+                <input type="number" name="phone" minlength="11" maxlength="12" required>
+            </div>
+            <div class="inputs">
+                <label for="">Cnic</label>
+                <input type="number" name="cnic" minlength="14" maxlength="15" required>
+            </div>
+            <div class="inputs">
+                <label for="">Father Cnic</label>
+                <input type="number" name="fcnic" minlength="14" maxlength="15">
+            </div>
+            <div class="inputs">
+                <label for="">Date of Birth</label>
+                <input type="date" name="dob">
+            </div>
+            <div class="inputs">
+                <label for="">Gender</label>
+                <select name="gender" id="" required>
+                    <option value="none" selected disabled>none</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="inputs address">
+                <label for="">Address</label>
+                <input type="text" id="add" name="address" required>
+            </div>
+            <div class="inputs quli">
+                <label for="">Last Qulification</label>
+                <select name="qulification" id="" required>
+                    <option value="none" selected disabled>none</option>
+                    <option value="middle">Middle</option>
+                    <option value="matric">Matric</option>
+                    <option value="intermediate">Intermidiate</option>
+                    <option value="graduate">Graduate</option>
+                    <option value="maters">Maters</option>
+                </select>
+            </div>
+            <div class="inputs lap">
+                <label for="">Do You Have a Laptop</label>
+                <select name="laptop" id="" required>
+                    <option value="none" selected disabled>none</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                
+                </select>
+            </div>
+           <button type="submit">Submit</button>
+        </form>
+
+    </section>
+</body>
+</html>

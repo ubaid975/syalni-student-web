@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            
+            background-color: #1f1;
+            
+            
+        }
+        header .logoc{
+            display: flex;
+            justify-content: center;
+
+        }
+        header .logo{
+            margin-left: 2em;
+        }
+        .container .icon{
+            width: 50px;
+            height: 50px;
+            display: flex;
+
+        }
+        .container{
+            display: flex;
+            justify-content: space-evenly;
+            padding-right: 8em;
+        }
+        .container .links{
+            border: 2px solid blue;
+            height: 30px;
+            text-align: center;
+            width: 120px;
+            border-radius: 50px;
+            margin-top: 1.5em;
+            
+        }
+        .container .links p{
+            padding-top: 2px;
+        }
+        .container .iconc{
+            
+            display: flex;
+        }
+        .container .iconc .icon{
+            margin: 1em;
+        }
+        .service{
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5em;
+            font-size:2rem;
+
+        }
+        .button{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 2em;
+        }
+        .b{
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            
+            border-bottom: none;
+            font-size: 1.5;
+            background-color: aliceblue;
+            
+        }
+        section{
+            width: 100%;
+        }
+        form{
+            display: flex;
+            width: 70%;
+            margin: 3em auto;
+            justify-content: center;
+        }
+        form .inputs{
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+
+            
+        }
+        form .inputs select{
+            height: 2em;
+            text-align: justify;
+            margin-right: 1em;
+            
+        }
+        form button{
+            height: 2em;
+            width: 5em;
+            margin-top: 1.3em;
+            background-color: blue;
+            color: white;
+            
+            
+        }
+        table{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        table th,td{
+            padding-top: 0.2em;
+            text-align: center;
+            padding-left: 1em;
+            
+        }
+        .error{
+            display: flex;
+            justify-content: center;
+        }
+        .city input{
+            height: 2em;
+
+        }
+        .b:visited{
+            border: 2px solid blue;
+            border-bottom: none;
+            color: blue;
+        }
+        .b:hover{
+            border: 2px solid blue;
+            border-bottom: none;
+            color: blue;
+        }
+        
+</style>
+</head>
+<body>
+    <header>
+    
+        <div class="logoc">
+            <img src="\static\studentreg\logo.png" alt="" class="logo">
+        </div>
+        <div class="container">
+            <div class="iconc">
+                <a href="https://www.facebook.com/saylani.smit?mibextid=ZbWKwL" target="_blank"><img src="\static\studentreg\facebook.png" alt="" class="icon"></a>
+                <a href="https://www.instagram.com/officialswit?igsh=a3BhYnR0aDQ4YjU=" target="_blank"><img src="\static\studentreg\intagram.png" alt="" class="icon"></a>
+                <a href="https://youtube.com/@saylaniwelfaretrustofficial?si=LH7FcZIeYhO6Zrbn" target="_blank"><img src="\static\studentreg\youtube.png" alt="" class="icon"></a>
+            </div>
+            <div class="tittle">
+                <h1>Registration</h1>
+                <h1>Form - SMIT</h1>
+            </div>
+            <div class="links">
+                <p>student portal</p>
+            </div>
+    
+    
+        </div>
+        <div class="service">
+            <p>Services-Education-Registration</p>
+        </div>
+        <div class="button">
+            <div class="btn1 btn">
+                <a href="/sylani/student/register/" class="b registration">Registration</a>
+            </div>
+            <div class="btn2 btn">
+                <a href="/sylani/student/data/" class="b Students">Students</a>
+            </div>
+            <div class="btn3 btn">
+                <a href="/sylani/student/result/" class="Result b">Result</a>
+            </div>
+        </div>
+       </header>
+       <section>
+            <form action="" method="post">
+                {% csrf_token %}
+                
+                
+                <div class="inputs city">
+                    <label for="">Enter Your Cnic Number</label>
+                    <input type="text" name="cnic">
+                    
+                </div>
+                <button type="submit">Search</button>
+            </form>
+            {% if stu %}
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Father Name</th>
+                        <th>Roll No</th>
+                        <th>City</th>
+                        <th>Course</th>
+                        <th>Campus</th>
+                        <th>Timing</th>
+                        <th>Qulificaton</th>
+                    
+                    </tr>
+                    {% for i in stu %}
+                        <tr>
+                            <td>{{i.name}}</td>
+                            <td>{{i.fname}}</td>
+                            <td>{{i.rollno}}</td>
+                            <td>{{i.city}}</td>
+                            <td>{{i.course}}</td>
+                            <td>{{i.campus}}</td>
+                            <td>{{i.timing}}</td>
+                            <td>{{i.qulification}}</td>
+                            
+                        </tr>
+                    {% endfor %}
+                    
+                </table>
+            {% else %}
+                <div class="error">
+                    <h1>No Avalible</h1>
+                </div>
+
+            {% endif %}
+
+           
+       </section>
+       
+</body>
+</html>
